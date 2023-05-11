@@ -6,19 +6,25 @@ services:
     container_name: wireguard
     cap_add:
       - NET_ADMIN
+      - SYS_MODULE
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=1000             # find by "id (username)"
+      - PGID=1000             # find by "id (username)"
       - TZ=Asia/Kolkata
-      - SERVERURL=auto      # External ip
-      - SERVERPORT=51820    # PORT
-      - PEERS=5             # Number of clients 
+      - SERVERURL=122.160.31.52        # External ip
+      - SERVERPORT=51820      # PORT
+      - PEERS=5               # Number of clients 
       - PEERDNS=auto
       - INTERNAL_SUBNET=10.13.13.0
       - ALLOWEDIPS=0.0.0.0/0
+      - PERSISTENTKEEPALIVE_PEERS=all
       - LOG_CONFS=true
     volumes:
-      - /home/pi/docker/wireguard/config:/config
+      - /XXXX/XXXX/    wireguard/config:/config    #/home/pi/docker/wireguard/config
+      - /lib/modules:/lib/modules
+
     ports:
       - 51820:51820/udp
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
     restart: unless-stopped
