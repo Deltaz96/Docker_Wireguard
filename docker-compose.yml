@@ -11,7 +11,7 @@ services:
       - PUID=1000             # find by "id (username)"
       - PGID=1000             # find by "id (username)"
       - TZ=Asia/Kolkata
-      - SERVERURL=122.160.31.52        # External ip
+      - SERVERURL=XXX.XXX.XXX.XXX        # External ip
       - SERVERPORT=51820      # PORT
       - PEERS=5               # Number of clients 
       - PEERDNS=auto
